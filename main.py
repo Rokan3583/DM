@@ -1,16 +1,18 @@
 from tkinter import *
 w = 800
-h = 600
-player_size = 50
-x1, y1 = 0, 0
+h = 500
+player_size = 100
+x1, y1 = 50, 50
 player_color = 'red'
-x_finish = 700
+x_finish = w - 50
 def key_handler(event):
-    pass
+    canvas.move(player_id, 10,0)
 window = Tk()
 window.title('Догони меня если сможешь!')
-canvas = Canvas(window, width = w, height = h, bg = 'while')
-player_id =
-finish_id =
+canvas = Canvas(window, width = w, height = h, bg = 'white')
+canvas.pack()
+finish_id = canvas.create_rectangle(x_finish, 0, x_finish+10, h, fill = 'black')
+player_id = canvas.create_rectangle(x1, y1,x1+player_size,y1+player_size,fill =  player_color)
+
 window.bind('<KeyRelease>', key_handler)
 window.mainloop()
